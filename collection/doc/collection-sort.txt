@@ -1,0 +1,43 @@
+集合排序
+
+1) Collections 排序工具主要是适用于 List集合，对Set或Map没有作用
+
+2) List排序: 
+第一步，元素实现Comparable接口，或者基于元素构建一个Comparator对象
+第二步，调用Collections.sort()方法进行排序.
+
+3) Set排序
+TreeSet实现类，该类依赖TreeMap来对key进行排序.
+构造方法传比较器或者不传(使用元素的Comparable功能)
+构造方法也可以传入一个SortedSet，每个排序的接口或类都包含一个比较器.
+排序时间: 
+
+4) Map排序: TreeMap支持对key进行排序，在构造时，可以传比较器或者不传(直接使用key
+的Comparable功能)
+Map对value进行排序: 需要自定义实现，方法(Map.Entry<K, V> 构成的Set，然后再对该set对象
+提供一个比较器即可实现对value或者key的排序，由于key的排序已经由官方实现，只需实现
+value的排序即可.)
+排序时间: 
+
+5) 比较器: 由于一些类无法去改变，无法去加上Comparable接口或者修改原有的Comparable接口
+实现逻辑，因此，只能通过Comparator的方式来制定排序的规则.
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
