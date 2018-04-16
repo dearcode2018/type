@@ -20,9 +20,13 @@ import static org.junit.Assert.assertThat;
 import static org.junit.Assert.assertTrue;
 import static org.junit.Assert.fail;
 
+import java.util.HashSet;
+import java.util.Set;
+
 import org.junit.Ignore;
 import org.junit.Test;
 
+import com.hua.entity.StudentEntity;
 import com.hua.test.BaseTest;
 
 
@@ -60,6 +64,198 @@ public final class HashCodeTest extends BaseTest {
 	 * 
 	 * 
 	 */
+	
+	/**
+	 * 
+	 * 描述: 哈希码相同，equals是true，则直接忽略不替换
+	 * @author qye.zheng
+	 * 
+	 */
+	@Test
+	public void testHashSet1() {
+		try {
+			Set<StudentEntity> set = new HashSet<StudentEntity>();
+			StudentEntity entity = null;
+			
+			entity = new StudentEntity();
+			entity.setId(201);
+			entity.setName("张三");
+			entity.setRemark("备注1");
+			set.add(entity);
+			
+			entity = new StudentEntity();
+			entity.setId(201);
+			entity.setName("张三");
+			entity.setRemark("备注2");
+			set.add(entity);
+			
+			for (StudentEntity e : set)
+			{
+				System.out.println(e.getName());
+				System.out.println(e.getRemark());
+			}
+			
+		} catch (Exception e) {
+			log.error("testHashSet1 =====> ", e);
+		}
+	}
+	
+	/**
+	 * 
+	 * 描述: 哈希码相同，equals是false
+	 * @author qye.zheng
+	 * 
+	 */
+	@Test
+	public void testHashSet2() {
+		try {
+			Set<StudentEntity> set = new HashSet<StudentEntity>();
+			StudentEntity entity = null;
+			
+			entity = new StudentEntity();
+			entity.setId(201);
+			entity.setName("张三");
+			entity.setRemark("备注1");
+			set.add(entity);
+			
+			entity = new StudentEntity();
+			entity.setId(202);
+			entity.setName("张三");
+			entity.setRemark("备注2");
+			set.add(entity);
+			
+			for (StudentEntity e : set)
+			{
+				System.out.println(e.getName());
+				System.out.println(e.getRemark());
+			}
+			
+		} catch (Exception e) {
+			log.error("testHashSet2 =====> ", e);
+		}
+	}
+	
+	/**
+	 * 
+	 * 描述: 哈希码不同，equals是true，也是可以添加到集合的
+	 * @author qye.zheng
+	 * 
+	 */
+	@Test
+	public void testHashSet3() {
+		try {
+			Set<StudentEntity> set = new HashSet<StudentEntity>();
+			StudentEntity entity = null;
+			
+			entity = new StudentEntity();
+			entity.setId(201);
+			entity.setName("张三");
+			entity.setRemark("备注1");
+			set.add(entity);
+			
+			entity = new StudentEntity();
+			entity.setId(201);
+			entity.setName("张三2");
+			entity.setRemark("备注2");
+			set.add(entity);
+			
+			for (StudentEntity e : set)
+			{
+				System.out.println(e.getName());
+				System.out.println(e.getRemark());
+			}
+			
+		} catch (Exception e) {
+			log.error("testHashSet3 =====> ", e);
+		}
+	}
+	
+	/**
+	 * 
+	 * 描述: 哈希码不同，equals是false，也是可以添加到集合的
+	 * @author qye.zheng
+	 * 
+	 */
+	@Test
+	public void testHashSet4() {
+		try {
+			Set<StudentEntity> set = new HashSet<StudentEntity>();
+			StudentEntity entity = null;
+			
+			entity = new StudentEntity();
+			entity.setId(201);
+			entity.setName("张三");
+			entity.setRemark("备注1");
+			set.add(entity);
+			
+			entity = new StudentEntity();
+			entity.setId(202);
+			entity.setName("张三");
+			entity.setRemark("备注2");
+			set.add(entity);
+			
+			for (StudentEntity e : set)
+			{
+				System.out.println(e.getName());
+				System.out.println(e.getRemark());
+			}
+			
+		} catch (Exception e) {
+			log.error("testHashSet4 =====> ", e);
+		}
+	}
+	
+	/**
+	 * 
+	 * 描述: 
+	 * @author qye.zheng
+	 * 
+	 */
+	@Test
+	public void testHashSet5() {
+		try {
+			Set<StudentEntity> set = new HashSet<StudentEntity>();
+			StudentEntity entity = null;
+			
+			entity = new StudentEntity();
+			entity.setId(201);
+			entity.setName("张三");
+			entity.setRemark("备注1");
+			set.add(entity);
+			
+			entity = new StudentEntity();
+			entity.setId(201);
+			entity.setName("张三");
+			entity.setRemark("备注2");
+			set.add(entity);
+			
+			for (StudentEntity e : set)
+			{
+				System.out.println(e.getName());
+				System.out.println(e.getRemark());
+			}
+			
+		} catch (Exception e) {
+			log.error("testHashSet5 =====> ", e);
+		}
+	}
+	
+	
+	/**
+	 * 
+	 * 描述: 
+	 * @author qye.zheng
+	 * 
+	 */
+	@Test
+	public void testHashMap() {
+		try {
+			
+			
+		} catch (Exception e) {
+			log.error("testHashMap =====> ", e);
+		}
+	}
 	
 	/**
 	 * 
