@@ -32,7 +32,8 @@
 		<module>number</module>		
 		<module>string</module>		
 		<module>type</module>	
-		<module>variable</module>		
+		<module>variable</module>	
+		<module>data-structure</module>	
 	</modules>
  
 	<!-- 公共属性 -->
