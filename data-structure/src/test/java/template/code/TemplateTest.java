@@ -1,11 +1,11 @@
 /**
  * 描述: 
- * HanoiTowerTest.java
+ * TemplateTest.java
  * 
  * @author qye.zheng
  *  version 1.0
  */
-package com.hua.test.struct;
+package template.code;
 
 // 静态导入
 import static org.junit.Assert.assertArrayEquals;
@@ -30,79 +30,10 @@ import com.hua.test.BaseTest;
  * 描述: 
  * 
  * @author qye.zheng
- * HanoiTowerTest
+ * TemplateTest
  */
-public final class HanoiTowerTest extends BaseTest {
+public final class TemplateTest extends BaseTest {
 
-	// 总次数
-	private int count;
-	
-	/*
-	 * (塔座	A上从上到下编号为 1-n)
-	 */
-	
-	/**
-	 * 
-	 * @description 将第n号盘 从 塔座A 搬到 塔座C
-	 * @param diskNo 盘的编号
-	 * @param towerA 塔座A
-	 * @param towerC 塔座C
-	 * @author qianye.zheng
-	 */
-	private void move(int diskNo, char towerA, char towerC)
-	{
-		System.out.printf("第 %d 步: 将 %d号 盘从 %c柱 移到 %c柱 \n", ++count, diskNo, towerA, towerC);
-	}
-	
-	/**
-	 * 
-	 * @description 将编号为 1 到 maxDiskNo的盘从塔座A移动到塔座C
-	 * @param maxDiskNo 编号最大的圆盘
-	 * @param towerA 塔座A
-	 * @param towerB 塔座B (作为辅助)
-	 * @param towerC 塔座C
-	 * @author qianye.zheng
-	 */
-	private void hanoi(int maxDiskNo, char towerA, char towerB, char towerC)
-	{
-		if (1 == maxDiskNo)
-		{ // 只有一个盘
-			// 直接将编号为1的盘从 塔座A 移动到塔座C
-			move(1, towerA, towerC);
-		} else
-		{ // 超过一个盘，递归调用当前方法
-			// 将 编号 从maxDiskNo-1 到 1 的盘子，从塔座A移动到塔座B，塔座C做辅助  --> 盘子在B塔
-			hanoi(maxDiskNo - 1, towerA, towerC, towerB);
-			
-			// 将 指定编号的盘子，从塔座A移动到移动到塔座C
-			move(maxDiskNo, towerA, towerC);
-			
-			// 将 编号 从maxDiskNo-1 到 1 的盘子，从塔座B移动到塔座C，塔座A做辅助
-			hanoi(maxDiskNo - 1, towerB, towerA, towerC);
-		}
-	}
-	
-	/**
-	 * 
-	 * 描述: 
-	 * @author qye.zheng
-	 * 
-	 */
-	@Test
-	public void startHanoi() {
-		try {
-			
-			//hanoi(2, 'A', 'B', 'C');
-			
-			hanoi(3, 'A', 'B', 'C');
-			
-		} catch (Exception e) {
-			log.error("startHanoi =====> ", e);
-		}
-	}
-	
-	
-	
 	/**
 	 * 
 	 * 描述: 

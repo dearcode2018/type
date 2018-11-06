@@ -1,11 +1,11 @@
 /**
  * 描述: 
- * StackTest.java
+ * HanoiTowerTest.java
  * 
  * @author qye.zheng
  *  version 1.0
  */
-package com.hua.test.struct;
+package com.hua.test.recursive;
 
 // 静态导入
 import static org.junit.Assert.assertArrayEquals;
@@ -23,20 +23,71 @@ import static org.junit.Assert.fail;
 import org.junit.Ignore;
 import org.junit.Test;
 
-import com.hua.bean.Tree;
 import com.hua.test.BaseTest;
-import com.hua.util.JacksonUtil;
 
 
 /**
  * 描述: 
  * 
  * @author qye.zheng
- * StackTest
+ * HanoiTowerTest
  */
-public final class StackTest extends BaseTest {
+public final class HanoiTowerTest extends BaseTest {
 
-
+	// 总次数
+	private int count;
+	
+	/**
+	 * 汉诺塔(Hanoi Tower)，又称河内塔，源于印度古老的传说.大梵天创造世界时做了
+	3根柱子，一根柱子上从下往上按照大小顺序摞着64个圆盘.大梵天命令婆罗门把圆盘从 下面开始按照大小顺序重新摆放到另一根柱子上，
+	并且规定，任何时候，小圆盘上都不能放大圆盘，并且每次只能移动一个圆盘.
+	 */
+	
+	/*
+	 * (塔座	A上从上到下编号为 1-n)
+	 */
+	
+	/**
+	 * 
+	 * @description 将第n号盘 从 塔座A 搬到 塔座C
+	 * @param diskNo 盘的编号
+	 * @param towerA 塔座A
+	 * @param towerC 塔座C
+	 * @author qianye.zheng
+	 */
+	private void move(int diskNo, char towerA, char towerC)
+	{
+		System.out.printf("第 %d 步: 将 %d号 盘从 %c柱 移到 %c柱 \n", ++count, diskNo, towerA, towerC);
+	}
+	
+	/**
+	 * 
+	 * @description 将编号为 1 到 maxDiskNo的盘从塔座A移动到塔座C
+	 * @param maxDiskNo 编号最大的圆盘
+	 * @param towerA 塔座A
+	 * @param towerB 塔座B (作为辅助)
+	 * @param towerC 塔座C
+	 * @author qianye.zheng
+	 */
+	private void hanoi(int maxDiskNo, char towerA, char towerB, char towerC)
+	{
+		if (1 == maxDiskNo)
+		{ // 只有一个盘
+			// 直接将编号为1的盘从 塔座A 移动到塔座C
+			move(1, towerA, towerC);
+		} else
+		{ // 超过一个盘，递归调用当前方法
+			// 将 编号 从maxDiskNo-1 到 1 的盘子，从塔座A移动到塔座B，塔座C做辅助  --> 盘子在B塔
+			hanoi(maxDiskNo - 1, towerA, towerC, towerB);
+			
+			// 将塔座A剩下的盘子，从塔座A移动到移动到塔座C
+			move(maxDiskNo, towerA, towerC);
+			
+			// 将 编号 从maxDiskNo-1 到 1 的盘子，从塔座B移动到塔座C，塔座A做辅助
+			hanoi(maxDiskNo - 1, towerB, towerA, towerC);
+		}
+	}
+	
 	/**
 	 * 
 	 * 描述: 
@@ -44,68 +95,19 @@ public final class StackTest extends BaseTest {
 	 * 
 	 */
 	@Test
-	public void testTree() {
+	public void startHanoi() {
 		try {
-			int i = 1;
-			Tree root = new Tree();
-			root.setRoot(true);
-			root.setId(i++);
-			root.setCode("1");
-			root.setName("根结点");
-			Tree node = null;
 			
-			Tree sub1 = new Tree();
-			sub1.setRoot(true);
-			sub1.setId(i++);
-			sub1.setCode("11");
-			sub1.setName("二级结点AD");
-			root.getSubs().add(sub1);
-			node = new Tree();
-			node.setId(i++);
-			node.setCode("1101");
-			node.setName("三级结点AEE");
-			sub1.getSubs().add(node);
-			node = new Tree();
-			node.setId(i++);
-			node.setCode("1102");
-			node.setName("三级结点AB");
-			sub1.getSubs().add(node);
-			Tree node2 = new Tree();
-			node2.setId(i++);
-			node2.setCode("110201");
-			node2.setName("四级结点AE");
-			node.getSubs().add(node2);
+			//hanoi(2, 'A', 'B', 'C');
 			
-			Tree sub2 = new Tree();
-			sub2.setRoot(true);
-			sub2.setId(i++);
-			sub1.setCode("12");
-			sub2.setName("二级结点XCB");
-			root.getSubs().add(sub2);
-			node = new Tree();
-			node.setId(i++);
-			node.setCode("1201");
-			node.setName("三级结点HD");
-			sub2.getSubs().add(node);
-			
-			Tree sub3 = new Tree();
-			sub3.setRoot(true);
-			sub3.setId(i++);
-			sub3.setCode("13");
-			sub3.setName("二级结点CE");
-			root.getSubs().add(sub3);
-			node = new Tree();
-			node.setId(i++);
-			node.setCode("1301");
-			node.setName("三级结点KE");
-			sub3.getSubs().add(node);
-			
-			System.out.println(JacksonUtil.writeAsString(root));
-			
+			//hanoi(3, 'A', 'B', 'C');
+			hanoi(64, 'A', 'B', 'C');
 		} catch (Exception e) {
-			log.error("testTree =====> ", e);
+			log.error("startHanoi =====> ", e);
 		}
 	}
+	
+	
 	
 	/**
 	 * 

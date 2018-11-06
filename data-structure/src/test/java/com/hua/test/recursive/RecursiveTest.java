@@ -1,11 +1,11 @@
 /**
  * 描述: 
- * StackTest.java
+ * RecursiveTest.java
  * 
  * @author qye.zheng
  *  version 1.0
  */
-package com.hua.test.struct;
+package com.hua.test.recursive;
 
 // 静态导入
 import static org.junit.Assert.assertArrayEquals;
@@ -23,20 +23,54 @@ import static org.junit.Assert.fail;
 import org.junit.Ignore;
 import org.junit.Test;
 
-import com.hua.bean.Tree;
 import com.hua.test.BaseTest;
-import com.hua.util.JacksonUtil;
 
 
 /**
  * 描述: 
  * 
  * @author qye.zheng
- * StackTest
+ * RecursiveTest
  */
-public final class StackTest extends BaseTest {
+public final class RecursiveTest extends BaseTest {
 
-
+	/**
+	 * 
+	 * @description  阶乘 
+	 * 阶乘 递归调用
+	 * 方法栈
+	 * @param n
+	 * @return
+	 * @author qianye.zheng
+	 */
+	private int factorial(final int n)
+	{
+		
+		/*
+		 * 结束循环的条件
+		 * 
+		 */
+		if (n <= 0)
+		{
+			return 0;
+		}
+		
+		if (1 == n)
+		{
+			return 1;
+		}
+		/*
+		 * 递归调用: 在方法中调用自身
+		 * 
+		 * 方法调用开始，压入当前线程的方法栈，
+		 * 在方法中递归调用
+		 * 
+		 */
+		
+		// 大于1
+		return n * factorial(n - 1);
+	}
+	
 	/**
 	 * 
 	 * 描述: 
@@ -44,66 +78,14 @@ public final class StackTest extends BaseTest {
 	 * 
 	 */
 	@Test
-	public void testTree() {
+	public void testFactorial() {
 		try {
-			int i = 1;
-			Tree root = new Tree();
-			root.setRoot(true);
-			root.setId(i++);
-			root.setCode("1");
-			root.setName("根结点");
-			Tree node = null;
-			
-			Tree sub1 = new Tree();
-			sub1.setRoot(true);
-			sub1.setId(i++);
-			sub1.setCode("11");
-			sub1.setName("二级结点AD");
-			root.getSubs().add(sub1);
-			node = new Tree();
-			node.setId(i++);
-			node.setCode("1101");
-			node.setName("三级结点AEE");
-			sub1.getSubs().add(node);
-			node = new Tree();
-			node.setId(i++);
-			node.setCode("1102");
-			node.setName("三级结点AB");
-			sub1.getSubs().add(node);
-			Tree node2 = new Tree();
-			node2.setId(i++);
-			node2.setCode("110201");
-			node2.setName("四级结点AE");
-			node.getSubs().add(node2);
-			
-			Tree sub2 = new Tree();
-			sub2.setRoot(true);
-			sub2.setId(i++);
-			sub1.setCode("12");
-			sub2.setName("二级结点XCB");
-			root.getSubs().add(sub2);
-			node = new Tree();
-			node.setId(i++);
-			node.setCode("1201");
-			node.setName("三级结点HD");
-			sub2.getSubs().add(node);
-			
-			Tree sub3 = new Tree();
-			sub3.setRoot(true);
-			sub3.setId(i++);
-			sub3.setCode("13");
-			sub3.setName("二级结点CE");
-			root.getSubs().add(sub3);
-			node = new Tree();
-			node.setId(i++);
-			node.setCode("1301");
-			node.setName("三级结点KE");
-			sub3.getSubs().add(node);
-			
-			System.out.println(JacksonUtil.writeAsString(root));
-			
+			System.out.println("fac(1) = " + factorial(1));
+			System.out.println("fac(2) = " + factorial(2));
+			System.out.println("fac(3) = " + factorial(3));
+			System.out.println("fac(4) = " + factorial(4));
 		} catch (Exception e) {
-			log.error("testTree =====> ", e);
+			log.error("testFactorial =====> ", e);
 		}
 	}
 	
