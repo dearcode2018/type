@@ -17,15 +17,58 @@ import java.util.List;
 public class Tree
 {
 	
+	/* 结点id */
 	private Integer id;
 	
+	/* 父结点id */
+	private Integer parentId;
+	
+	/* 结点编码 */
 	private String code;
 	
+	/* 结点名称 */
 	private String name;
 	
+	/* 是否为根节点 */
 	private boolean root;
 	
+	/* 是否显示 */
+	private boolean show;
+	
+	/* 后代节点 */
 	private List<Tree> subs = new ArrayList<>();
+
+	/**
+	* @return the show
+	*/
+	public final boolean isShow()
+	{
+		return show;
+	}
+
+	/**
+	* @return the parentId
+	*/
+	public final Integer getParentId()
+	{
+		return parentId;
+	}
+
+	/**
+	* @param parentId the parentId to set
+	*/
+	public final void setParentId(Integer parentId)
+	{
+		this.parentId = parentId;
+	}
+
+	/**
+	* @param show the show to set
+	*/
+	public final void setShow(boolean show)
+	{
+		this.show = show;
+	}
 
 	/**
 	* @return the id
