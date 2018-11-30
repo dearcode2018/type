@@ -68,6 +68,27 @@ public final class SortTest extends BaseTest {
 	 * 
 	 */
 	@Test
+	public void testNumberSort() {
+		try {
+			int[] nums = {2, 1, 33, 9, 8, 4};
+			Arrays.sort(nums, 0, nums.length);
+			for (int i = 0; i < nums.length; i++)
+			{
+				System.out.println(nums[i]);
+			}
+			
+		} catch (Exception e) {
+			log.error("testNumberSort=====> ", e);
+		}
+	}
+	
+	/**
+	 * 
+	 * 描述: 
+	 * @author qye.zheng
+	 * 
+	 */
+	@Test
 	public void testSort() {
 		/*
 		 1) Collections 排序工具主要是适用于 List集合，对Set或Map没有作用
@@ -306,6 +327,22 @@ public final class SortTest extends BaseTest {
 			
 		} catch (Exception e) {
 			log.error("testMapValueSortComparator =====> ", e);
+		}
+	}
+	
+	/**
+	 * 
+	 * 描述: 
+	 * @author qye.zheng
+	 * 
+	 */
+	@Test
+	public void test() {
+		try {
+			
+			
+		} catch (Exception e) {
+			log.error("test=====> ", e);
 		}
 	}
 	

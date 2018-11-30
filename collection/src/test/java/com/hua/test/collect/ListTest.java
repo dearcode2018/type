@@ -23,11 +23,13 @@ import static org.junit.Assert.fail;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Iterator;
+import java.util.LinkedList;
 import java.util.List;
 
 import org.junit.Ignore;
 import org.junit.Test;
 
+import com.hua.collection.ListReadWrite;
 import com.hua.test.BaseTest;
 
 
@@ -43,6 +45,40 @@ public final class ListTest extends BaseTest {
 	 java.util.List 通过下标来建立元素存放位置
 	 自然，可以直接通过下标来操作元素.
 	 */
+	
+	
+	/**
+	 * 
+	 * 描述: 
+	 * @author qye.zheng
+	 * 
+	 */
+	@Test
+	public void testArrayListAndLinkedList() {
+		try {
+			System.out.println("ArrayList添加 " + ListReadWrite.N + " 条记录 耗时: " +
+					ListReadWrite.timeOfAdd(new ArrayList<Object>()));
+			
+			System.out.println("LinkedList添加 " + ListReadWrite.N + " 条记录 耗时: " +
+					ListReadWrite.timeOfAdd(new LinkedList<Object>()));			
+			
+			System.out.println("ArrayList添加 " + ListReadWrite.N + " 条到头部记录 耗时: " +
+					ListReadWrite.timeOfAddToHead(new ArrayList<Object>()));
+			
+			System.out.println("LinkedList添加 " + ListReadWrite.N + " 条到头部记录 耗时: " +
+					ListReadWrite.timeOfAddToHead(new LinkedList<Object>()));			
+			
+			List<Object> arrayList = ListReadWrite.add(new ArrayList<Object>());
+			List<Object> linkedList = ListReadWrite.add(new LinkedList<Object>());
+			System.out.println("ArrayList遍历 " + ListReadWrite.N + " 条记录 耗时: " +
+					ListReadWrite.timeOfTraverse(arrayList));
+			System.out.println("LinkedList遍历 " + ListReadWrite.N + " 条记录 耗时: " +
+					ListReadWrite.timeOfTraverse(linkedList));
+						
+		} catch (Exception e) {
+			log.error("testArrayListAndLinkedList =====> ", e);
+		}
+	}
 	
 	/**
 	 * 

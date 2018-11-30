@@ -1,5 +1,5 @@
 /**
-  * @filename SortObject.java
+  * @filename SortObject2.java
   * @description 
   * @version 1.0
   * @author qianye.zheng
@@ -7,11 +7,11 @@
 package com.hua.bean;
 
  /**
- * @type SortObject
- * @description 排序对象
+ * @type SortObject2
+ * @description 排序对象，不实现Comparable接口
  * @author qianye.zheng
  */
-public class SortObject implements Comparable<SortObject>
+public class SortObject2
 {
 	private String id;
 	
@@ -103,7 +103,7 @@ public class SortObject implements Comparable<SortObject>
 			return false;
 		if (getClass() != obj.getClass())
 			return false;
-		SortObject other = (SortObject) obj;
+		SortObject2 other = (SortObject2) obj;
 		if (id == null)
 		{
 			if (other.id != null)
@@ -137,45 +137,6 @@ public class SortObject implements Comparable<SortObject>
 		String result = "[id = " + id + ", name = " + name + ", size = " + size + "]";
 		
 		return result;
-	}
-
-	/**
-	 * @description 实现 [可比较] 接口
-	 *  升序排序 (降序则返回多加一个负号)
-	 *  this > other 返回 正数
-	 *  this == other 返回 0
-	 *  this < other 返回 负数
-	 * 
-	 * 
-	 * @param o
-	 * @return 0: 相等，-1: this小于other，1: this大于other
-	 * @author qianye.zheng
-	 */
-	@Override
-	public int compareTo(SortObject o)
-	{
-		System.out.println("SortObject.compareTo()");
-		if (asc)
-		{ // 升序
-			if (size > o.getSize())
-			{
-				return 1;
-			} else if (size < o.getSize())
-			{
-				return -1;
-			}
-		} else
-		{ // 降序
-			if (size > o.getSize())
-			{
-				return -1;
-			} else if (size < o.getSize())
-			{
-				return 1;
-			}
-		}
-		
-		return 0;
 	}
 	
 }

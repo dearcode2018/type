@@ -20,6 +20,8 @@ import static org.junit.Assert.assertThat;
 import static org.junit.Assert.assertTrue;
 import static org.junit.Assert.fail;
 
+import java.util.BitSet;
+
 import org.junit.After;
 import org.junit.AfterClass;
 import org.junit.Before;
@@ -47,7 +49,6 @@ public final class TypeTest extends BaseTest {
 	@Test
 	public void testTemp() {
 		try {
-			
 			
 		} catch (Exception e) {
 			log.error("testTemp=====> ", e);
