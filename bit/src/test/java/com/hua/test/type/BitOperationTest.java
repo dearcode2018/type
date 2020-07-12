@@ -1,11 +1,11 @@
 /**
  * 描述: 
- * TemplateTest.java
+ * BitOperationTest.java
  * 
  * @author qye.zheng
  *  version 1.0
  */
-package template.code;
+package com.hua.test.type;
 
 //静态导入
 import static org.junit.jupiter.api.Assertions.assertArrayEquals;
@@ -36,18 +36,104 @@ import com.hua.test.BaseTest;
 
 
 /**
- * 描述: 
+ * 描述: 位运算
  * 
  * @author qye.zheng
- * TemplateTest
+ * BitOperationTest
  */
 //@DisplayName("测试类名称")
 //@Tag("测试类标签")
 //@Tags({@Tag("测试类标签1"), @Tag("测试类标签2")})
-public final class TemplateTest extends BaseTest {
+public final class BitOperationTest extends BaseTest {
 
 	
 	
+	
+	/**
+	 * 
+	 * 描述: 
+	 * @author qye.zheng
+	 * 
+	 */
+	//@DisplayName("test")
+	@Test
+	public void testLeftMove() {
+		try {
+			/**
+			 * 左移
+			 * 高位舍弃，低位用0补充
+			 * 移位过程中，可能改变符号位(正负)
+			 */
+			// 671596011
+			//System.out.println(hashCode());
+			
+			int a = 3;
+			// 00000000000000000000000000000011 移动30位，变成负数
+			System.out.println(a << 30);
+			// 11111111111111111111111111111111
+			int b = -64;
+			System.out.println(b << 1);
+			
+		} catch (Exception e) {
+			log.error("testLeftMove =====> ", e);
+		}
+	}
+	
+	/**
+	 * 
+	 * 描述: 
+	 * @author qye.zheng
+	 * 
+	 */
+	//@DisplayName("test")
+	@Test
+	public void testRightMove() {
+		try {
+			/**
+			 * 右移
+			 * 低位舍弃，高位用符号位补充
+			 * 移位过程中，不会改变符号位
+			 */
+			// 671596011
+			//System.out.println(hashCode());
+			int a = 4;
+			System.out.println(a >> 1);
+			// 11111111111111111111111111111111
+			int b = -64;
+			System.out.println(b >> 1);
+			
+		} catch (Exception e) {
+			log.error("testRightMove =====> ", e);
+		}
+	}
+	
+	/**
+	 * 
+	 * 描述: 无符号右移
+	 * @author qye.zheng
+	 * 
+	 */
+	//@DisplayName("test")
+	@Test
+	public void testRightMoveWithoutSymbol() {
+		try {
+			/**
+			 * 无符号右移
+			 * 低位舍弃，高位用0补充
+			 * 移位过程中，负数变成正数
+			 */
+			// 671596011
+			//System.out.println(hashCode());
+			int a = 4;
+			System.out.println(a >>> 1);
+			// 11111111111111111111111111111111
+			int b = -64;
+			System.out.println(b >>> 1);
+			
+		} catch (Exception e) {
+			log.error("testRightMove =====> ", e);
+		}
+	}
 	
 	/**
 	 * 

@@ -9,6 +9,8 @@ package com.hua.bean;
 
 import java.sql.Time;
 
+import com.hua.entity.BaseEntity;
+
 /**
  * 描述: 登录
  * 

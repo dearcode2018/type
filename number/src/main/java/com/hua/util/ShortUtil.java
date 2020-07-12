@@ -7,7 +7,6 @@
 package com.hua.util;
 
 import com.hua.constant.Constant;
-import com.hua.util.FormatUtil;
 
 /**
  * 描述: 
@@ -47,7 +46,7 @@ public final class ShortUtil
 			// 正数(包括0)
 			result = Integer.toBinaryString(value);
 			// 补0
-			result = FormatUtil.addZero(result, Short.SIZE);
+			result = StringUtil.addZero(result, Short.SIZE);
 		} else 
 		{
 			// 负数 截取16 - 31 位 substring(16)

@@ -1,11 +1,11 @@
 /**
  * 描述: 
- * TemplateTest.java
+ * ByteUsageTest.java
  * 
  * @author qye.zheng
  *  version 1.0
  */
-package template.code;
+package com.hua.test._byte;
 
 //静态导入
 import static org.junit.jupiter.api.Assertions.assertArrayEquals;
@@ -39,15 +39,59 @@ import com.hua.test.BaseTest;
  * 描述: 
  * 
  * @author qye.zheng
- * TemplateTest
+ * ByteUsageTest
  */
 //@DisplayName("测试类名称")
 //@Tag("测试类标签")
 //@Tags({@Tag("测试类标签1"), @Tag("测试类标签2")})
-public final class TemplateTest extends BaseTest {
+public final class ByteUsageTest extends BaseTest {
 
 	
+	/**
+	 * 
+	 * 描述: 
+	 * @author qye.zheng
+	 * 
+	 */
+	//@DisplayName("test")
+	@Test
+	public void testLineBreak() {
+		try {
+			/*
+			 * 换行符1个字节
+			 */
+			String value = "a\nb";
+			byte[] data = value.getBytes();
+			for (byte b : data) {
+				System.out.println(b);
+			}
+		} catch (Exception e) {
+			log.error("testLineBreak =====> ", e);
+		}
+	}	
 	
+	/**
+	 * 
+	 * 描述: 
+	 * @author qye.zheng
+	 * 
+	 */
+	//@DisplayName("test")
+	@Test
+	public void testResolverData() {
+		try {
+			/*
+			 * 换行符1个字节
+			 */
+			String value = "Some Protocol\n" + "providerName\n" + "version:12";
+			byte[] data = value.getBytes();
+			for (byte b : data) {
+				System.out.println(b);
+			}
+		} catch (Exception e) {
+			log.error("testResolverData =====> ", e);
+		}
+	}	
 	
 	/**
 	 * 

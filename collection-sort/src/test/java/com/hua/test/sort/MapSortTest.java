@@ -117,7 +117,6 @@ public final class MapSortTest extends BaseTest {
 			 */
 			Set<String> keySet = map.keySet();
 			SortedSet<String> sortedKeySet = new TreeSet<String>(keySet);
-			
 			for (String key : sortedKeySet)
 			{
 				System.out.println(map.get(key).toString());

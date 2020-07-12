@@ -7,8 +7,9 @@
  */
 package com.hua.bean;
 
-import java.sql.Time;
 import java.sql.Timestamp;
+
+import com.hua.entity.BaseEntity;
 
 /**
  * 描述: 用户日志
