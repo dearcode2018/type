@@ -16,4 +16,16 @@ public final class TypeServiceImpl extends CoreServiceImpl implements
 		TypeService
 {
 
+	/**
+	 * 
+	 * @description 
+	 * @param name
+	 * @author qianye.zheng
+	 */
+	@Override
+	public void info(final String name) {
+		System.out.println("name = " + name);
+		//System.out.println("change code do otherthing.");
+	}
+	
 }

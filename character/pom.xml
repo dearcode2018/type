@@ -6,7 +6,7 @@
 		<groupId>com.hua</groupId>
 		<artifactId>type-entire</artifactId>
 		<version>0.0.1</version>
-	</parent>	>
+	</parent>
 	<artifactId>character</artifactId>
 	<packaging>jar</packaging>
 	<name>character</name>

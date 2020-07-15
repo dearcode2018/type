@@ -22,6 +22,12 @@
 			<artifactId>type</artifactId>
 			<version>${type.version}</version>
 		</dependency>
+
+		<dependency>
+			<groupId>com.hua</groupId>
+			<artifactId>string</artifactId>
+			<version>${type.version}</version>
+		</dependency>
 		
 	</dependencies>
 

@@ -1,11 +1,11 @@
 /**
  * 描述: 
- * TypeAllTest.java
+ * TemplateTest.java
  * 
  * @author qye.zheng
  *  version 1.0
  */
-package com.hua.test.type;
+package template.code;
 
 //静态导入
 import static org.junit.jupiter.api.Assertions.assertArrayEquals;
@@ -18,10 +18,12 @@ import static org.junit.jupiter.api.Assertions.assertNull;
 import static org.junit.jupiter.api.Assertions.assertSame;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 import static org.junit.jupiter.api.Assertions.fail;
+import static org.junit.jupiter.api.DynamicTest.dynamicTest;
 import static org.junit.jupiter.api.Assumptions.assumeFalse;
 import static org.junit.jupiter.api.Assumptions.assumeTrue;
 import static org.junit.jupiter.api.Assumptions.assumingThat;
-import static org.junit.jupiter.api.DynamicTest.dynamicTest;
+
+
 
 import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeEach;
@@ -37,23 +39,13 @@ import com.hua.test.BaseTest;
  * 描述: 
  * 
  * @author qye.zheng
- * SystemTest
+ * TemplateTest
  */
 //@DisplayName("测试类名称")
 //@Tag("测试类标签")
 //@Tags({@Tag("测试类标签1"), @Tag("测试类标签2")})
-public final class TypeAllTest extends BaseTest {
+public final class TemplateTest extends BaseTest {
 
-	
-	
-	
-	/**
-	 * 
-	 * 
-	 * 
-	 * 
-	 * 
-	 */
 	
 	
 	
@@ -67,6 +59,7 @@ public final class TypeAllTest extends BaseTest {
 	@Test
 	public void test() {
 		try {
+			
 			
 		} catch (Exception e) {
 			log.error("test =====> ", e);
@@ -83,8 +76,7 @@ public final class TypeAllTest extends BaseTest {
 	@Test
 	public void testTemp() {
 		try {
-			// 下划线 相当于 1000000，加下划线更加直观
-			int num = 1000_000;
+			
 			
 		} catch (Exception e) {
 			log.error("testTemp=====> ", e);

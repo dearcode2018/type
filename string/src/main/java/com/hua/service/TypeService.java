@@ -13,4 +13,6 @@ package com.hua.service;
 public interface TypeService extends CoreService
 {
 
+	
+	public void info(final String name);
 }

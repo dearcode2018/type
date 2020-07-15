@@ -32,11 +32,15 @@
 
 
 
-
-
-
-
-
+Node
+x.next -> 指向下一个元素
+指向上一个元素 <- x.prev
+x.item 指向当前元素
+x.nextIndex 下一个元素的索引
+关系: 
+x.next.prev == x 
+x.prev.next == x
+删除/更新元素: 删除/更新x.lastReturned最近访问的元素
 
 
 

@@ -1,11 +1,11 @@
 /**
  * 描述: 
- * TypeAllTest.java
+ * DynamicRunTest.java
  * 
  * @author qye.zheng
  *  version 1.0
  */
-package com.hua.test.type;
+package com.hua.test.run;
 
 //静态导入
 import static org.junit.jupiter.api.Assertions.assertArrayEquals;
@@ -23,6 +23,12 @@ import static org.junit.jupiter.api.Assumptions.assumeTrue;
 import static org.junit.jupiter.api.Assumptions.assumingThat;
 import static org.junit.jupiter.api.DynamicTest.dynamicTest;
 
+import java.io.File;
+import java.lang.reflect.Method;
+import java.net.MalformedURLException;
+import java.net.URL;
+import java.net.URLClassLoader;
+
 import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Disabled;
@@ -30,6 +36,8 @@ import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Tag;
 import org.junit.jupiter.api.Test;
 
+import com.hua.service.TypeService;
+import com.hua.service.impl.TypeServiceImpl;
 import com.hua.test.BaseTest;
 
 
@@ -37,25 +45,95 @@ import com.hua.test.BaseTest;
  * 描述: 
  * 
  * @author qye.zheng
- * SystemTest
+ * DynamicRunTest
  */
 //@DisplayName("测试类名称")
 //@Tag("测试类标签")
 //@Tags({@Tag("测试类标签1"), @Tag("测试类标签2")})
-public final class TypeAllTest extends BaseTest {
+public final class DynamicRunTest extends BaseTest {
 
-	
-	
 	
 	/**
 	 * 
-	 * 
-	 * 
-	 * 
+	 * 描述: 
+	 * @author qye.zheng
 	 * 
 	 */
+	//@DisplayName("test")
+	@Test
+	public void testDynamicRun() {
+		try {
+			TypeService service = new TypeServiceImpl();
+			service.info("张三12");
+			String path = "E:\\repo\\com\\hua\\string\\0.0.1\\string-0.0.1.jar";
+			path = "string-0.0.1.jar";
+			//Runtime.getRuntime().loadLibrary("string-0.0.1");
+			loadJar(path);
+			
+			service.info("张三12");
+		} catch (Exception e) {
+			log.error("testDynamicRun =====> ", e);
+		}
+	}
 	
+	private static void loadJar(String jarPath) throws MalformedURLException {
+        File jarFile = new File(jarPath); // 从URLClassLoader类中获取类所在文件夹的方法，jar也可以认为是一个文件夹
+
+        if (jarFile.exists() == false) {
+            System.out.println("jar file not found.");
+            return;
+        }
+
+        //获取类加载器的addURL方法，准备动态调用
+        Method method = null;
+        try {
+            method = URLClassLoader.class.getDeclaredMethod("addURL", URL.class);
+        } catch (NoSuchMethodException | SecurityException e1) {
+            e1.printStackTrace();
+        } 
+        
+        // 获取方法的访问权限，保存原始值
+        boolean accessible = method.isAccessible();
+        try {
+            //修改访问权限为可写
+            if (accessible == false) {
+                method.setAccessible(true);
+            }
+
+            // 获取系统类加载器
+            URLClassLoader classLoader = (URLClassLoader) ClassLoader.getSystemClassLoader();
+            
+            //获取jar文件的url路径
+            java.net.URL url = jarFile.toURI().toURL();
+            
+            //jar路径加入到系统url路径里
+            method.invoke(classLoader, url);
+        } catch (Exception e) {
+            e.printStackTrace();
+        } finally {
+            //回写访问权限
+            method.setAccessible(accessible);
+        }
+	}
 	
+	/**
+	 * 
+	 * 描述: 
+	 * @author qye.zheng
+	 * 
+	 */
+	//@DisplayName("test")
+	@Test
+	public void testGetProperty() {
+		try {
+			String key = "java.library.path";
+			String value = System.getProperty(key);
+			System.out.println(value);
+			
+		} catch (Exception e) {
+			log.error("testGetProperty =====> ", e);
+		}
+	}
 	
 	/**
 	 * 
@@ -67,6 +145,7 @@ public final class TypeAllTest extends BaseTest {
 	@Test
 	public void test() {
 		try {
+			
 			
 		} catch (Exception e) {
 			log.error("test =====> ", e);
@@ -83,8 +162,7 @@ public final class TypeAllTest extends BaseTest {
 	@Test
 	public void testTemp() {
 		try {
-			// 下划线 相当于 1000000，加下划线更加直观
-			int num = 1000_000;
+			
 			
 		} catch (Exception e) {
 			log.error("testTemp=====> ", e);
