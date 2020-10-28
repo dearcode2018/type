@@ -18,4 +18,7 @@ public interface ISomeInterface extends Serializable
 	public abstract void common();
 	
 	public abstract void other();
+	
+	static void sM() {System.out.println("----");}
+	
 }

@@ -1,11 +1,11 @@
 /**
  * 描述: 
- * EnumTest.java
+ * ClassTest.java
  * 
  * @author qye.zheng
  *  version 1.0
  */
-package com.hua.test._enum;
+package com.hua.test.type;
 
 //静态导入
 import static org.junit.jupiter.api.Assertions.assertArrayEquals;
@@ -18,12 +18,12 @@ import static org.junit.jupiter.api.Assertions.assertNull;
 import static org.junit.jupiter.api.Assertions.assertSame;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 import static org.junit.jupiter.api.Assertions.fail;
+import static org.junit.jupiter.api.DynamicTest.dynamicTest;
 import static org.junit.jupiter.api.Assumptions.assumeFalse;
 import static org.junit.jupiter.api.Assumptions.assumeTrue;
 import static org.junit.jupiter.api.Assumptions.assumingThat;
-import static org.junit.jupiter.api.DynamicTest.dynamicTest;
 
-import java.util.EnumSet;
+
 
 import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeEach;
@@ -32,8 +32,6 @@ import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Tag;
 import org.junit.jupiter.api.Test;
 
-import com.hua.constant.ext.EnumFull;
-import com.hua.face.ISomeInterface;
 import com.hua.test.BaseTest;
 
 
@@ -41,44 +39,13 @@ import com.hua.test.BaseTest;
  * 描述: 
  * 
  * @author qye.zheng
- * EnumTest
+ * ClassTest
  */
 //@DisplayName("测试类名称")
 //@Tag("测试类标签")
 //@Tags({@Tag("测试类标签1"), @Tag("测试类标签2")})
-public final class EnumTest extends BaseTest {
+public final class ClassTest extends BaseTest {
 
-	/**
-	 * 
-	 * 描述: 
-	 * @author qye.zheng
-	 * 
-	 */
-	@Test
-	public void testEnumFull() {
-		try {
-			
-			EnumFull e1 = EnumFull.FIELD_A;
-			
-			log.info("testEnumFull =====> " + e1.name() + ", " + e1.ordinal());
-			log.info("testEnumFull =====> " + e1.getName());
-			
-			EnumFull e2 = EnumFull.valueOf("FIELD_B");
-			log.info("testEnumFull =====> " + e2.name() + ", " + e2.ordinal());
-			log.info("testEnumFull =====> " + e2.getName());
-			
-			//
-			EnumFull e3 = EnumFull.FIELD_C;
-			log.info("testEnumFull =====> " + e3.name());
-			
-			// 根据value获取枚举实例，和Enum.valueOf(String name)方法类似
-			EnumFull e4 = EnumFull.getInstance("A");
-			log.info("testEnumFull =====> e4 --> " + e4.getName() + ", " + e4.getValue());
-			
-		} catch (Exception e) {
-			log.error("testEnumFull =====> ", e);
-		}
-	}
 	
 	/**
 	 * 
@@ -88,64 +55,25 @@ public final class EnumTest extends BaseTest {
 	 */
 	//@DisplayName("test")
 	@Test
-	public void testSupperClass() {
+	public void testClass() {
 		try {
-			EnumFull en = EnumFull.FIELD_A;
-			assertTrue(en instanceof Enum);
 			
-			// class com.hua.constant.ext.EnumFull$1
-			//System.out.println(en.getClass());
+			Class<Integer> clazz1 = Integer.class;
 			
-			// class com.hua.constant.ext.EnumFull
-			//System.out.println(en.getClass().getSuperclass());
+			Class<Integer> clazz2 = int.class;
+			Class<Integer> clazz3 = Integer.TYPE;
 			
-			// class java.lang.Enum
-			//System.out.println(en.getClass().getSuperclass().getSuperclass());
+			System.out.println(clazz1);
+			System.out.println(clazz2);
+			System.out.println(clazz3);
 			
-			assertTrue(en.getClass().getSuperclass() == EnumFull.class);
-			assertTrue(en.getClass().getSuperclass().getSuperclass() == Enum.class);
+			assertTrue(clazz2 == clazz3);
+			assertTrue(clazz1 != clazz2);
+			
+			assertTrue(Void.class != void.class);
 			
 		} catch (Exception e) {
 			log.error("test =====> ", e);
-		}
-	}
-	
-	/**
-	 * 
-	 * 描述: 
-	 * @author qye.zheng
-	 * 
-	 */
-	//@DisplayName("test")
-	@Test
-	public void testEnumSet() {
-		try {
-			EnumSet<EnumFull> eSet = EnumSet.allOf(EnumFull.class);
-			for (EnumFull e : eSet) {
-				System.out.println(e.name());
-			}
-			ISomeInterface.sM();
-		} catch (Exception e) {
-			log.error("test =====> ", e);
-		}
-	}
-	
-	class A implements ISomeInterface {
-		/**
-		 * @description 
-		 * @author qianye.zheng
-		 */
-		@Override
-		public void common() {
-			ISomeInterface.sM();
-		}
-
-		/**
-		 * @description 
-		 * @author qianye.zheng
-		 */
-		@Override
-		public void other() {
 		}
 	}
 	
